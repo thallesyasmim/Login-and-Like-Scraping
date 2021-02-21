@@ -10,11 +10,11 @@ const puppeteer = require('puppeteer')
       
         await page.waitForTimeout(5000)
         
-        await page.type('[name="username"]', process.env.EMAIL, { delay: 200 })
+        await page.type('[name="username"]', process.env.EMAIL, { delay: getRandomInt(200, 550) })
 
         await page.waitForTimeout(2000)
 
-        await page.type('[type="password"]', process.env.PASSWORD, { delay: 200 })
+        await page.type('[type="password"]', process.env.PASSWORD, { delay: getRandomInt(200, 550) })
       
         await page.click('button[type="submit"]', { button: 'left', delay: 500 })
 
@@ -22,7 +22,7 @@ const puppeteer = require('puppeteer')
 
         await page.click('.aOOlW.HoLwm')
 
-        await page.waitForTimeout(5000)
+        await page.waitForTimeout(2100)
 
         await autoScroll(page)
 
@@ -57,4 +57,10 @@ async function autoScroll(page){
             }, 120);
         });
     });
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
