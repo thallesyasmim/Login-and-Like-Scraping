@@ -8,14 +8,13 @@ const puppeteer = require('puppeteer')
         const page = await browser.newPage()
         await page.goto('https://instagram.com')
       
-        const email_input = await page.waitForXPath('//input[@name="username"]', { visible: true, timeout: 5000  })
-        const password_input = await page.waitForXPath('//input[@type="password"]', { visible: true, timeout: 5000  })
+        await page.waitForTimeout(5000)
         
-        await page.type(email_input, process.env.EMAIL, { delay: 200 })
+        await page.type('[name="username"]', process.env.EMAIL, { delay: 200 })
 
         await page.waitForTimeout(2000)
 
-        await page.type(password_input, process.env.PASSWORD, { delay: 200 })
+        await page.type('[type="password"]', process.env.PASSWORD, { delay: 200 })
       
         await page.click('button[type="submit"]', { button: 'left', delay: 500 })
 
@@ -26,6 +25,8 @@ const puppeteer = require('puppeteer')
         await page.waitForTimeout(5000)
 
         await autoScroll(page)
+
+        await page.waitForTimeout(2500)
 
         const button_like = await page.waitForXPath('//*[@id="react-root"]/section/main/section/div/div[2]/div/article[1]/div[3]/section[1]/span[1]/button[1]', { visible: true, timeout: 5000 })
         await button_like.click()
