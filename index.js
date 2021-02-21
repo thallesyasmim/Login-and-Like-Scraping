@@ -10,11 +10,11 @@ const puppeteer = require('puppeteer')
       
         await page.waitForTimeout(5000)
         
-        await page.type('[name="username"]', process.env.EMAIL, { delay: getRandomInt(200, 550) })
+        await page.type('[name="username"]', process.env.EMAIL, { delay: getRandomInt(200, 400) })
 
         await page.waitForTimeout(2000)
 
-        await page.type('[type="password"]', process.env.PASSWORD, { delay: getRandomInt(200, 550) })
+        await page.type('[type="password"]', process.env.PASSWORD, { delay: getRandomInt(200, 400) })
       
         await page.click('button[type="submit"]', { button: 'left', delay: 500 })
 
