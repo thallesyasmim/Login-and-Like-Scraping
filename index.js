@@ -32,8 +32,8 @@ const puppeteer = require('puppeteer')
         await button_like.click()
 
         
-
-        //   await browser.close()
+        await page.waitForTimeout(3000)
+        await browser.close()
     } catch (error) {
         throw new Error(error)
     }
